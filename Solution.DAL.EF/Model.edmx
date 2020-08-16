@@ -1,0 +1,1624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SocialGoalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="ProfilePicUrl" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="Activated" Type="bit" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentText" Type="nvarchar" MaxLength="250" />
+          <Property Name="UpdateId" Type="int" Nullable="false" />
+          <Property Name="CommentDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommentUsers">
+          <Key>
+            <PropertyRef Name="CommentUserId" />
+          </Key>
+          <Property Name="CommentUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foci">
+          <Key>
+            <PropertyRef Name="FocusId" />
+          </Key>
+          <Property Name="FocusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FocusName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FollowRequests">
+          <Key>
+            <PropertyRef Name="FollowRequestId" />
+          </Key>
+          <Property Name="FollowRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ToUserId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FollowUsers">
+          <Key>
+            <PropertyRef Name="FollowUserId" />
+          </Key>
+          <Property Name="FollowUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="FromUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+          <Property Name="AddedDate" Type="datetime" Nullable="false" />
+          <Property Name="ApplicationUser_Id" Type="nvarchar" MaxLength="128" />
+          <Property Name="ApplicationUser_Id1" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Goals">
+          <Key>
+            <PropertyRef Name="GoalId" />
+          </Key>
+          <Property Name="GoalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoalName" Type="nvarchar" MaxLength="55" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Target" Type="float" />
+          <Property Name="GoalType" Type="bit" Nullable="false" />
+          <Property Name="MetricId" Type="int" />
+          <Property Name="GoalStatusId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoalStatus">
+          <Key>
+            <PropertyRef Name="GoalStatusId" />
+          </Key>
+          <Property Name="GoalStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoalStatusType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GroupComments">
+          <Key>
+            <PropertyRef Name="GroupCommentId" />
+          </Key>
+          <Property Name="GroupCommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentText" Type="nvarchar(max)" />
+          <Property Name="GroupUpdateId" Type="int" Nullable="false" />
+          <Property Name="CommentDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupCommentUsers">
+          <Key>
+            <PropertyRef Name="GroupCommentUserId" />
+          </Key>
+          <Property Name="GroupCommentUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupCommentId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupGoals">
+          <Key>
+            <PropertyRef Name="GroupGoalId" />
+          </Key>
+          <Property Name="GroupGoalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Target" Type="float" />
+          <Property Name="MetricId" Type="int" />
+          <Property Name="FocusId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="GoalStatusId" Type="int" Nullable="false" />
+          <Property Name="GroupUserId" Type="int" Nullable="false" />
+          <Property Name="AssignedGroupUserId" Type="int" />
+          <Property Name="AssignedTo" Type="nvarchar(max)" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupInvitations">
+          <Key>
+            <PropertyRef Name="GroupInvitationId" />
+          </Key>
+          <Property Name="GroupInvitationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="nvarchar(max)" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="ToUserId" Type="nvarchar(max)" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupRequests">
+          <Key>
+            <PropertyRef Name="GroupRequestId" />
+          </Key>
+          <Property Name="GroupRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUpdates">
+          <Key>
+            <PropertyRef Name="GroupUpdateId" />
+          </Key>
+          <Property Name="GroupUpdateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Updatemsg" Type="nvarchar(max)" />
+          <Property Name="status" Type="float" />
+          <Property Name="GroupGoalId" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUpdateSupports">
+          <Key>
+            <PropertyRef Name="GroupUpdateSupportId" />
+          </Key>
+          <Property Name="GroupUpdateSupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupUpdateId" Type="int" Nullable="false" />
+          <Property Name="GroupUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateSupportedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUpdateUsers">
+          <Key>
+            <PropertyRef Name="GroupUpdateUserId" />
+          </Key>
+          <Property Name="GroupUpdateUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupUpdateId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUsers">
+          <Key>
+            <PropertyRef Name="GroupUserId" />
+          </Key>
+          <Property Name="GroupUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+          <Property Name="AddedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Metrics">
+          <Key>
+            <PropertyRef Name="MetricId" />
+          </Key>
+          <Property Name="MetricId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RegistrationTokens">
+          <Key>
+            <PropertyRef Name="RegistrationTokenId" />
+          </Key>
+          <Property Name="RegistrationTokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SecurityTokens">
+          <Key>
+            <PropertyRef Name="SecurityTokenId" />
+          </Key>
+          <Property Name="SecurityTokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActualID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupportInvitations">
+          <Key>
+            <PropertyRef Name="SupportInvitationId" />
+          </Key>
+          <Property Name="SupportInvitationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="nvarchar(max)" />
+          <Property Name="GoalId" Type="int" Nullable="false" />
+          <Property Name="ToUserId" Type="nvarchar(max)" />
+          <Property Name="SentDate" Type="datetime" Nullable="false" />
+          <Property Name="Accepted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supports">
+          <Key>
+            <PropertyRef Name="SupportId" />
+          </Key>
+          <Property Name="SupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoalId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="SupportedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Updates">
+          <Key>
+            <PropertyRef Name="UpdateId" />
+          </Key>
+          <Property Name="UpdateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Updatemsg" Type="nvarchar(max)" />
+          <Property Name="status" Type="float" />
+          <Property Name="GoalId" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UpdateSupports">
+          <Key>
+            <PropertyRef Name="UpdateSupportId" />
+          </Key>
+          <Property Name="UpdateSupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UpdateId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="UpdateSupportedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfiles">
+          <Key>
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="UserProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateEdited" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="float" />
+          <Property Name="ContactNo" Type="float" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Foci_dbo_Groups_GroupId">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Foci" Type="Self.Foci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Foci">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="ApplicationUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="ApplicationUser_Id1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Goals_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Goals" Type="Self.Goals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId">
+          <End Role="GroupUpdates" Type="Self.GroupUpdates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupComments" Type="Self.GroupComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUpdates">
+              <PropertyRef Name="GroupUpdateId" />
+            </Principal>
+            <Dependent Role="GroupComments">
+              <PropertyRef Name="GroupUpdateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupInvitations_dbo_Groups_GroupId">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupInvitations" Type="Self.GroupInvitations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupInvitations">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupRequests_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="GroupRequests" Type="Self.GroupRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupRequests">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupRequests_dbo_Groups_GroupId">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupRequests" Type="Self.GroupRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupRequests">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId">
+          <End Role="GroupUpdates" Type="Self.GroupUpdates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUpdateSupports" Type="Self.GroupUpdateSupports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUpdates">
+              <PropertyRef Name="GroupUpdateId" />
+            </Principal>
+            <Dependent Role="GroupUpdateSupports">
+              <PropertyRef Name="GroupUpdateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupGoals_GroupGoals">
+          <End Role="GroupGoals" Type="Self.GroupGoals" Multiplicity="1" />
+          <End Role="GroupGoals1" Type="Self.GroupGoals" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GroupGoals">
+              <PropertyRef Name="GroupGoalId" />
+            </Principal>
+            <Dependent Role="GroupGoals1">
+              <PropertyRef Name="GroupGoalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SocialGoalModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentUsers" EntityType="Self.CommentUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Foci" EntityType="Self.Foci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FollowRequests" EntityType="Self.FollowRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FollowUsers" EntityType="Self.FollowUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goals" EntityType="Self.Goals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoalStatus" EntityType="Self.GoalStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupComments" EntityType="Self.GroupComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupCommentUsers" EntityType="Self.GroupCommentUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupGoals" EntityType="Self.GroupGoals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupInvitations" EntityType="Self.GroupInvitations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupRequests" EntityType="Self.GroupRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUpdates" EntityType="Self.GroupUpdates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUpdateSupports" EntityType="Self.GroupUpdateSupports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUpdateUsers" EntityType="Self.GroupUpdateUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUsers" EntityType="Self.GroupUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metrics" EntityType="Self.Metrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrationTokens" EntityType="Self.RegistrationTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecurityTokens" EntityType="Self.SecurityTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupportInvitations" EntityType="Self.SupportInvitations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supports" EntityType="Self.Supports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Updates" EntityType="Self.Updates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UpdateSupports" EntityType="Self.UpdateSupports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Foci_dbo_Groups_GroupId" Association="Self.FK_dbo_Foci_dbo_Groups_GroupId">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Foci" EntitySet="Foci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Goals_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_Goals_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Goals" EntitySet="Goals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId" Association="Self.FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId">
+            <End Role="GroupUpdates" EntitySet="GroupUpdates" />
+            <End Role="GroupComments" EntitySet="GroupComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupInvitations_dbo_Groups_GroupId" Association="Self.FK_dbo_GroupInvitations_dbo_Groups_GroupId">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupInvitations" EntitySet="GroupInvitations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupRequests_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_GroupRequests_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GroupRequests" EntitySet="GroupRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupRequests_dbo_Groups_GroupId" Association="Self.FK_dbo_GroupRequests_dbo_Groups_GroupId">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupRequests" EntitySet="GroupRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId" Association="Self.FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId">
+            <End Role="GroupUpdates" EntitySet="GroupUpdates" />
+            <End Role="GroupUpdateSupports" EntitySet="GroupUpdateSupports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupGoals_GroupGoals" Association="Self.FK_GroupGoals_GroupGoals">
+            <End Role="GroupGoals" EntitySet="GroupGoals" />
+            <End Role="GroupGoals1" EntitySet="GroupGoals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SocialGoalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="Activated" Type="Boolean" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="FollowUsers" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id" FromRole="AspNetUsers" ToRole="FollowUsers" />
+          <NavigationProperty Name="FollowUsers1" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1" FromRole="AspNetUsers" ToRole="FollowUsers" />
+          <NavigationProperty Name="FollowUsers2" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId" FromRole="AspNetUsers" ToRole="FollowUsers" />
+          <NavigationProperty Name="FollowUsers3" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId" FromRole="AspNetUsers" ToRole="FollowUsers" />
+          <NavigationProperty Name="Goals" Relationship="Self.FK_dbo_Goals_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="Goals" />
+          <NavigationProperty Name="GroupRequests" Relationship="Self.FK_dbo_GroupRequests_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="GroupRequests" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateId" Type="Int32" Nullable="false" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CommentUsers">
+          <Key>
+            <PropertyRef Name="CommentUserId" />
+          </Key>
+          <Property Name="CommentUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foci">
+          <Key>
+            <PropertyRef Name="FocusId" />
+          </Key>
+          <Property Name="FocusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FocusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK_dbo_Foci_dbo_Groups_GroupId" FromRole="Foci" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="FollowRequests">
+          <Key>
+            <PropertyRef Name="FollowRequestId" />
+          </Key>
+          <Property Name="FollowRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ToUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FollowUsers">
+          <Key>
+            <PropertyRef Name="FollowUserId" />
+          </Key>
+          <Property Name="FollowUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FromUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+          <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicationUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationUser_Id1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id" FromRole="FollowUsers" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1" FromRole="FollowUsers" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers2" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId" FromRole="FollowUsers" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers3" Relationship="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId" FromRole="FollowUsers" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Goals">
+          <Key>
+            <PropertyRef Name="GoalId" />
+          </Key>
+          <Property Name="GoalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoalName" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Target" Type="Double" />
+          <Property Name="GoalType" Type="Boolean" Nullable="false" />
+          <Property Name="MetricId" Type="Int32" />
+          <Property Name="GoalStatusId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_Goals_dbo_AspNetUsers_UserId" FromRole="Goals" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="GoalStatus">
+          <Key>
+            <PropertyRef Name="GoalStatusId" />
+          </Key>
+          <Property Name="GoalStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoalStatusType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GroupComments">
+          <Key>
+            <PropertyRef Name="GroupCommentId" />
+          </Key>
+          <Property Name="GroupCommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupUpdateId" Type="Int32" Nullable="false" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GroupUpdates" Relationship="Self.FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId" FromRole="GroupComments" ToRole="GroupUpdates" />
+        </EntityType>
+        <EntityType Name="GroupCommentUsers">
+          <Key>
+            <PropertyRef Name="GroupCommentUserId" />
+          </Key>
+          <Property Name="GroupCommentUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupCommentId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupGoals">
+          <Key>
+            <PropertyRef Name="GroupGoalId" />
+          </Key>
+          <Property Name="GroupGoalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Target" Type="Double" />
+          <Property Name="MetricId" Type="Int32" />
+          <Property Name="FocusId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GoalStatusId" Type="Int32" Nullable="false" />
+          <Property Name="GroupUserId" Type="Int32" Nullable="false" />
+          <Property Name="AssignedGroupUserId" Type="Int32" />
+          <Property Name="AssignedTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GroupGoals1" Relationship="Self.FK_GroupGoals_GroupGoals" FromRole="GroupGoals" ToRole="GroupGoals1" />
+          <NavigationProperty Name="GroupGoals2" Relationship="Self.FK_GroupGoals_GroupGoals" FromRole="GroupGoals1" ToRole="GroupGoals" />
+        </EntityType>
+        <EntityType Name="GroupInvitations">
+          <Key>
+            <PropertyRef Name="GroupInvitationId" />
+          </Key>
+          <Property Name="GroupInvitationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="ToUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK_dbo_GroupInvitations_dbo_Groups_GroupId" FromRole="GroupInvitations" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="GroupRequests">
+          <Key>
+            <PropertyRef Name="GroupRequestId" />
+          </Key>
+          <Property Name="GroupRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_GroupRequests_dbo_AspNetUsers_UserId" FromRole="GroupRequests" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK_dbo_GroupRequests_dbo_Groups_GroupId" FromRole="GroupRequests" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Foci" Relationship="Self.FK_dbo_Foci_dbo_Groups_GroupId" FromRole="Groups" ToRole="Foci" />
+          <NavigationProperty Name="GroupInvitations" Relationship="Self.FK_dbo_GroupInvitations_dbo_Groups_GroupId" FromRole="Groups" ToRole="GroupInvitations" />
+          <NavigationProperty Name="GroupRequests" Relationship="Self.FK_dbo_GroupRequests_dbo_Groups_GroupId" FromRole="Groups" ToRole="GroupRequests" />
+        </EntityType>
+        <EntityType Name="GroupUpdates">
+          <Key>
+            <PropertyRef Name="GroupUpdateId" />
+          </Key>
+          <Property Name="GroupUpdateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Updatemsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Double" />
+          <Property Name="GroupGoalId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GroupComments" Relationship="Self.FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId" FromRole="GroupUpdates" ToRole="GroupComments" />
+          <NavigationProperty Name="GroupUpdateSupports" Relationship="Self.FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId" FromRole="GroupUpdates" ToRole="GroupUpdateSupports" />
+        </EntityType>
+        <EntityType Name="GroupUpdateSupports">
+          <Key>
+            <PropertyRef Name="GroupUpdateSupportId" />
+          </Key>
+          <Property Name="GroupUpdateSupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupUpdateId" Type="Int32" Nullable="false" />
+          <Property Name="GroupUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateSupportedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GroupUpdates" Relationship="Self.FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId" FromRole="GroupUpdateSupports" ToRole="GroupUpdates" />
+        </EntityType>
+        <EntityType Name="GroupUpdateUsers">
+          <Key>
+            <PropertyRef Name="GroupUpdateUserId" />
+          </Key>
+          <Property Name="GroupUpdateUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupUpdateId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUsers">
+          <Key>
+            <PropertyRef Name="GroupUserId" />
+          </Key>
+          <Property Name="GroupUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin" Type="Boolean" Nullable="false" />
+          <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Metrics">
+          <Key>
+            <PropertyRef Name="MetricId" />
+          </Key>
+          <Property Name="MetricId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegistrationTokens">
+          <Key>
+            <PropertyRef Name="RegistrationTokenId" />
+          </Key>
+          <Property Name="RegistrationTokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="Guid" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SecurityTokens">
+          <Key>
+            <PropertyRef Name="SecurityTokenId" />
+          </Key>
+          <Property Name="SecurityTokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="Guid" Nullable="false" />
+          <Property Name="ActualID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupportInvitations">
+          <Key>
+            <PropertyRef Name="SupportInvitationId" />
+          </Key>
+          <Property Name="SupportInvitationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GoalId" Type="Int32" Nullable="false" />
+          <Property Name="ToUserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supports">
+          <Key>
+            <PropertyRef Name="SupportId" />
+          </Key>
+          <Property Name="SupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoalId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupportedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Updates">
+          <Key>
+            <PropertyRef Name="UpdateId" />
+          </Key>
+          <Property Name="UpdateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Updatemsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Double" />
+          <Property Name="GoalId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UpdateSupports">
+          <Key>
+            <PropertyRef Name="UpdateSupportId" />
+          </Key>
+          <Property Name="UpdateSupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UpdateId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateSupportedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserProfiles">
+          <Key>
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="UserProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateEdited" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="Double" />
+          <Property Name="ContactNo" Type="Double" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="ApplicationUser_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="ApplicationUser_Id1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="FollowUsers" Type="Self.FollowUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUsers">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Goals_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Goals" Type="Self.Goals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goals">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupRequests_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="GroupRequests" Type="Self.GroupRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupRequests">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Foci_dbo_Groups_GroupId">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Foci" Type="Self.Foci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Foci">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId">
+          <End Role="GroupUpdates" Type="Self.GroupUpdates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupComments" Type="Self.GroupComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUpdates">
+              <PropertyRef Name="GroupUpdateId" />
+            </Principal>
+            <Dependent Role="GroupComments">
+              <PropertyRef Name="GroupUpdateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupGoals_GroupGoals">
+          <End Role="GroupGoals" Type="Self.GroupGoals" Multiplicity="1" />
+          <End Role="GroupGoals1" Type="Self.GroupGoals" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GroupGoals">
+              <PropertyRef Name="GroupGoalId" />
+            </Principal>
+            <Dependent Role="GroupGoals1">
+              <PropertyRef Name="GroupGoalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupInvitations_dbo_Groups_GroupId">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupInvitations" Type="Self.GroupInvitations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupInvitations">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupRequests_dbo_Groups_GroupId">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupRequests" Type="Self.GroupRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupRequests">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId">
+          <End Role="GroupUpdates" Type="Self.GroupUpdates" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUpdateSupports" Type="Self.GroupUpdateSupports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUpdates">
+              <PropertyRef Name="GroupUpdateId" />
+            </Principal>
+            <Dependent Role="GroupUpdateSupports">
+              <PropertyRef Name="GroupUpdateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SocialGoalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" />
+          <EntitySet Name="CommentUsers" EntityType="Self.CommentUsers" />
+          <EntitySet Name="Foci" EntityType="Self.Foci" />
+          <EntitySet Name="FollowRequests" EntityType="Self.FollowRequests" />
+          <EntitySet Name="FollowUsers" EntityType="Self.FollowUsers" />
+          <EntitySet Name="Goals" EntityType="Self.Goals" />
+          <EntitySet Name="GoalStatus" EntityType="Self.GoalStatus" />
+          <EntitySet Name="GroupComments" EntityType="Self.GroupComments" />
+          <EntitySet Name="GroupCommentUsers" EntityType="Self.GroupCommentUsers" />
+          <EntitySet Name="GroupGoals" EntityType="Self.GroupGoals" />
+          <EntitySet Name="GroupInvitations" EntityType="Self.GroupInvitations" />
+          <EntitySet Name="GroupRequests" EntityType="Self.GroupRequests" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" />
+          <EntitySet Name="GroupUpdates" EntityType="Self.GroupUpdates" />
+          <EntitySet Name="GroupUpdateSupports" EntityType="Self.GroupUpdateSupports" />
+          <EntitySet Name="GroupUpdateUsers" EntityType="Self.GroupUpdateUsers" />
+          <EntitySet Name="GroupUsers" EntityType="Self.GroupUsers" />
+          <EntitySet Name="Metrics" EntityType="Self.Metrics" />
+          <EntitySet Name="RegistrationTokens" EntityType="Self.RegistrationTokens" />
+          <EntitySet Name="SecurityTokens" EntityType="Self.SecurityTokens" />
+          <EntitySet Name="SupportInvitations" EntityType="Self.SupportInvitations" />
+          <EntitySet Name="Supports" EntityType="Self.Supports" />
+          <EntitySet Name="Updates" EntityType="Self.Updates" />
+          <EntitySet Name="UpdateSupports" EntityType="Self.UpdateSupports" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId" Association="Self.FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="FollowUsers" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Goals_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_Goals_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Goals" EntitySet="Goals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupRequests_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_GroupRequests_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GroupRequests" EntitySet="GroupRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Foci_dbo_Groups_GroupId" Association="Self.FK_dbo_Foci_dbo_Groups_GroupId">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Foci" EntitySet="Foci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId" Association="Self.FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId">
+            <End Role="GroupUpdates" EntitySet="GroupUpdates" />
+            <End Role="GroupComments" EntitySet="GroupComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupGoals_GroupGoals" Association="Self.FK_GroupGoals_GroupGoals">
+            <End Role="GroupGoals" EntitySet="GroupGoals" />
+            <End Role="GroupGoals1" EntitySet="GroupGoals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupInvitations_dbo_Groups_GroupId" Association="Self.FK_dbo_GroupInvitations_dbo_Groups_GroupId">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupInvitations" EntitySet="GroupInvitations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupRequests_dbo_Groups_GroupId" Association="Self.FK_dbo_GroupRequests_dbo_Groups_GroupId">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupRequests" EntitySet="GroupRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId" Association="Self.FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId">
+            <End Role="GroupUpdates" EntitySet="GroupUpdates" />
+            <End Role="GroupUpdateSupports" EntitySet="GroupUpdateSupports" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SocialGoalModelStoreContainer" CdmEntityContainer="SocialGoalEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="SocialGoalModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SocialGoalModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SocialGoalModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SocialGoalModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SocialGoalModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ProfilePicUrl" ColumnName="ProfilePicUrl" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="SocialGoalModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentUsers">
+            <EntityTypeMapping TypeName="SocialGoalModel.CommentUsers">
+              <MappingFragment StoreEntitySet="CommentUsers">
+                <ScalarProperty Name="CommentUserId" ColumnName="CommentUserId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Foci">
+            <EntityTypeMapping TypeName="SocialGoalModel.Foci">
+              <MappingFragment StoreEntitySet="Foci">
+                <ScalarProperty Name="FocusId" ColumnName="FocusId" />
+                <ScalarProperty Name="FocusName" ColumnName="FocusName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FollowRequests">
+            <EntityTypeMapping TypeName="SocialGoalModel.FollowRequests">
+              <MappingFragment StoreEntitySet="FollowRequests">
+                <ScalarProperty Name="FollowRequestId" ColumnName="FollowRequestId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FollowUsers">
+            <EntityTypeMapping TypeName="SocialGoalModel.FollowUsers">
+              <MappingFragment StoreEntitySet="FollowUsers">
+                <ScalarProperty Name="FollowUserId" ColumnName="FollowUserId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="ApplicationUser_Id" ColumnName="ApplicationUser_Id" />
+                <ScalarProperty Name="ApplicationUser_Id1" ColumnName="ApplicationUser_Id1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goals">
+            <EntityTypeMapping TypeName="SocialGoalModel.Goals">
+              <MappingFragment StoreEntitySet="Goals">
+                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="GoalType" ColumnName="GoalType" />
+                <ScalarProperty Name="MetricId" ColumnName="MetricId" />
+                <ScalarProperty Name="GoalStatusId" ColumnName="GoalStatusId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoalStatus">
+            <EntityTypeMapping TypeName="SocialGoalModel.GoalStatus">
+              <MappingFragment StoreEntitySet="GoalStatus">
+                <ScalarProperty Name="GoalStatusId" ColumnName="GoalStatusId" />
+                <ScalarProperty Name="GoalStatusType" ColumnName="GoalStatusType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupComments">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupComments">
+              <MappingFragment StoreEntitySet="GroupComments">
+                <ScalarProperty Name="GroupCommentId" ColumnName="GroupCommentId" />
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="GroupUpdateId" ColumnName="GroupUpdateId" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupCommentUsers">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupCommentUsers">
+              <MappingFragment StoreEntitySet="GroupCommentUsers">
+                <ScalarProperty Name="GroupCommentUserId" ColumnName="GroupCommentUserId" />
+                <ScalarProperty Name="GroupCommentId" ColumnName="GroupCommentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupGoals">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupGoals">
+              <MappingFragment StoreEntitySet="GroupGoals">
+                <ScalarProperty Name="GroupGoalId" ColumnName="GroupGoalId" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="MetricId" ColumnName="MetricId" />
+                <ScalarProperty Name="FocusId" ColumnName="FocusId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="GoalStatusId" ColumnName="GoalStatusId" />
+                <ScalarProperty Name="GroupUserId" ColumnName="GroupUserId" />
+                <ScalarProperty Name="AssignedGroupUserId" ColumnName="AssignedGroupUserId" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupInvitations">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupInvitations">
+              <MappingFragment StoreEntitySet="GroupInvitations">
+                <ScalarProperty Name="GroupInvitationId" ColumnName="GroupInvitationId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupRequests">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupRequests">
+              <MappingFragment StoreEntitySet="GroupRequests">
+                <ScalarProperty Name="GroupRequestId" ColumnName="GroupRequestId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SocialGoalModel.Groups">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUpdates">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupUpdates">
+              <MappingFragment StoreEntitySet="GroupUpdates">
+                <ScalarProperty Name="GroupUpdateId" ColumnName="GroupUpdateId" />
+                <ScalarProperty Name="Updatemsg" ColumnName="Updatemsg" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="GroupGoalId" ColumnName="GroupGoalId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUpdateSupports">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupUpdateSupports">
+              <MappingFragment StoreEntitySet="GroupUpdateSupports">
+                <ScalarProperty Name="GroupUpdateSupportId" ColumnName="GroupUpdateSupportId" />
+                <ScalarProperty Name="GroupUpdateId" ColumnName="GroupUpdateId" />
+                <ScalarProperty Name="GroupUserId" ColumnName="GroupUserId" />
+                <ScalarProperty Name="UpdateSupportedDate" ColumnName="UpdateSupportedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUpdateUsers">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupUpdateUsers">
+              <MappingFragment StoreEntitySet="GroupUpdateUsers">
+                <ScalarProperty Name="GroupUpdateUserId" ColumnName="GroupUpdateUserId" />
+                <ScalarProperty Name="GroupUpdateId" ColumnName="GroupUpdateId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUsers">
+            <EntityTypeMapping TypeName="SocialGoalModel.GroupUsers">
+              <MappingFragment StoreEntitySet="GroupUsers">
+                <ScalarProperty Name="GroupUserId" ColumnName="GroupUserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metrics">
+            <EntityTypeMapping TypeName="SocialGoalModel.Metrics">
+              <MappingFragment StoreEntitySet="Metrics">
+                <ScalarProperty Name="MetricId" ColumnName="MetricId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrationTokens">
+            <EntityTypeMapping TypeName="SocialGoalModel.RegistrationTokens">
+              <MappingFragment StoreEntitySet="RegistrationTokens">
+                <ScalarProperty Name="RegistrationTokenId" ColumnName="RegistrationTokenId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecurityTokens">
+            <EntityTypeMapping TypeName="SocialGoalModel.SecurityTokens">
+              <MappingFragment StoreEntitySet="SecurityTokens">
+                <ScalarProperty Name="SecurityTokenId" ColumnName="SecurityTokenId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ActualID" ColumnName="ActualID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupportInvitations">
+            <EntityTypeMapping TypeName="SocialGoalModel.SupportInvitations">
+              <MappingFragment StoreEntitySet="SupportInvitations">
+                <ScalarProperty Name="SupportInvitationId" ColumnName="SupportInvitationId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supports">
+            <EntityTypeMapping TypeName="SocialGoalModel.Supports">
+              <MappingFragment StoreEntitySet="Supports">
+                <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SupportedDate" ColumnName="SupportedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Updates">
+            <EntityTypeMapping TypeName="SocialGoalModel.Updates">
+              <MappingFragment StoreEntitySet="Updates">
+                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
+                <ScalarProperty Name="Updatemsg" ColumnName="Updatemsg" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="GoalId" ColumnName="GoalId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UpdateSupports">
+            <EntityTypeMapping TypeName="SocialGoalModel.UpdateSupports">
+              <MappingFragment StoreEntitySet="UpdateSupports">
+                <ScalarProperty Name="UpdateSupportId" ColumnName="UpdateSupportId" />
+                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UpdateSupportedDate" ColumnName="UpdateSupportedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="SocialGoalModel.UserProfiles">
+              <MappingFragment StoreEntitySet="UserProfiles">
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="DateEdited" ColumnName="DateEdited" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SocialGoalModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

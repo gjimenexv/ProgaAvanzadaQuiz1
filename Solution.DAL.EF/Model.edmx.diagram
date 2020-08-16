@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26695e7d1115489f9894c2f77c1c5eec" Name="Diagram1">
+        <EntityTypeShape EntityType="SocialGoalModel.C__MigrationHistory" Width="1.5" PointX="10.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.AspNetUsers" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Comments" Width="1.5" PointX="10.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.CommentUsers" Width="1.5" PointX="7.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Foci" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.FollowRequests" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.FollowUsers" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Goals" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GoalStatus" Width="1.5" PointX="2.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupComments" Width="1.5" PointX="11" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupCommentUsers" Width="1.5" PointX="12.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupGoals" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupInvitations" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupRequests" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Groups" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupUpdates" Width="1.5" PointX="8.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupUpdateSupports" Width="1.5" PointX="11" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupUpdateUsers" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.GroupUsers" Width="1.5" PointX="10.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Metrics" Width="1.5" PointX="12.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.RegistrationTokens" Width="1.5" PointX="13.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.SecurityTokens" Width="1.5" PointX="13.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.SupportInvitations" Width="1.5" PointX="14.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Supports" Width="1.5" PointX="7.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.Updates" Width="1.5" PointX="14.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.UpdateSupports" Width="1.5" PointX="14.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialGoalModel.UserProfiles" Width="1.5" PointX="15.75" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_FollowUsers_dbo_AspNetUsers_ApplicationUser_Id1" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_FollowUsers_dbo_AspNetUsers_FromUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_FollowUsers_dbo_AspNetUsers_ToUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_Goals_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_GroupRequests_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_Foci_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_GroupComments_dbo_GroupUpdates_GroupUpdateId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_GroupGoals_GroupGoals" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_GroupInvitations_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_GroupRequests_dbo_Groups_GroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.FK_dbo_GroupUpdateSupports_dbo_GroupUpdates_GroupUpdateId" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialGoalModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
